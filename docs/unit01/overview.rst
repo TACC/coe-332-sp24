@@ -13,6 +13,9 @@ will be necessary for the rest of this course.
 
    class_intro
    tacc_onboarding
+   student_goals
    linux_essentials
    python_refresher
+   version_control_1
+   version_control_2
 
