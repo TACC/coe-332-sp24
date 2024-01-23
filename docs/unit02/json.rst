@@ -74,7 +74,7 @@ and cut and paste the contents into a file called ``Meteorite_Landings.json``:
 
 .. code-block:: console
 
-   [student-login]$ wget https://raw.githubusercontent.com/TACC/coe-332-sp23/main/docs/unit02/sample-data/Meteorite_Landings.json
+   [student-login]$ wget https://raw.githubusercontent.com/TACC/coe-332-sp24/main/docs/unit02/sample-data/Meteorite_Landings.json
 
 
 
