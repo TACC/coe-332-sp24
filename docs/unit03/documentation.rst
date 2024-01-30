@@ -222,7 +222,7 @@ script (only showing snippets below):
 
 .. code-block:: python3
 
-   def check_hemisphere(latitude: float, longitude: float) -> float:
+   def check_hemisphere(latitude: float, longitude: float) -> str:
 
 .. code-block:: python3
 
