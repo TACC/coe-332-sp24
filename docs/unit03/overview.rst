@@ -16,7 +16,7 @@ logging, unit testing, and exception handling.
    documentation
    logging
    unittest
+   errorhandling
 
 ..
-   errorhandling
    pdb
