@@ -37,6 +37,12 @@ from NASA. The requirements are as follows:
   in the input data
 
 
+.. note::
+
+   Edit Feb 1: In addition to printing "summary statistics to screen", plotting
+   data and storing as an image is acceptable.
+
+
 PART 2
 ~~~~~~
 
