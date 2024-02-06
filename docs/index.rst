@@ -21,6 +21,8 @@ provide a web-accessible interface to their system.
    unit01/overview
    unit02/overview
    unit03/overview
+   unit04/overview
+   unit05/overview
 
 
 .. toctree::
@@ -29,6 +31,7 @@ provide a web-accessible interface to their system.
 
    homework/homework01.rst
    homework/homework02.rst
+   homework/homework03.rst
 
 
 
