@@ -19,8 +19,8 @@ on if the usernames match).
    :maxdepth: 1
 
    containers_1
+   containers_2
 
 ..
-   containers_2
    docker_compose
 
