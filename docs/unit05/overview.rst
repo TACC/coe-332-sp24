@@ -20,7 +20,6 @@ on if the usernames match).
 
    containers_1
    containers_2
-
-..
    docker_compose
+
 
