@@ -85,11 +85,14 @@ You can find it by executing the command:
 
 .. note::
 
-   If the ``.ssh/`` directory does not exist, you may need to execute the command:
+   If the ``.ssh/`` directory does not exist, you can create a new key specifically 
+   for GitHub as follows. (Paste the output of the second command into the GitHub
+   web interface to set up SSH authentication):
 
    .. code-block:: console
 
-      $ mkdir -p ~/.ssh/ && ssh-keygen -f ~/.ssh/id_rsa -t rsa -b 3072 -N ""
+      $ mkdir -p ~/.ssh/ && ssh-keygen -f ~/.ssh/github_rsa -t rsa -b 3072 -N ""
+      $ cat ~/.ssh/github_rsa.pub
 
 Once the SSH key is set up, this command will push the changes from our local
 repository to the repository on GitHub:
