@@ -85,7 +85,7 @@ You can find it by executing the command:
 
 .. note::
 
-   If the ``.ssh/`` directory does not exist, you can create a new key specifically 
+   If the ``~/.ssh/`` directory does not exist, you can create a new key specifically 
    for GitHub as follows. (Paste the output of the second command into the GitHub
    web interface to set up SSH authentication):
 
