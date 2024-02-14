@@ -102,7 +102,7 @@ text editor and add the following two lines:
 .. code-block:: console
 
     Host github.com
-      IdentityFile ~/.ssh/github_rsa_key
+      IdentityFile ~/.ssh/github_rsa
    
 
 Once the SSH key is set up, this command will push the changes from our local
