@@ -16,7 +16,7 @@ Here are just a few examples:
 
 * Waterfall Method -- Software tasks are organized into sets or "phases" with a linear ordering; tasks from each phase are
   completed before moving to the next phase. In practice, phases tended to be longer (on the order of weeks or months) for
-  larger projects than could span years. 
+  larger projects that could span years. 
 * Agile Method-- In contrast to Waterfall, Agile advocates smaller, complete software development life cycles, where "minimal"
   products are released and then incrementally improved. 
 * Test Driven Development -- Developers write tests asserting what the software should do before writing any software. 
