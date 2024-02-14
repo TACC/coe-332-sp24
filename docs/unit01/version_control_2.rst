@@ -83,16 +83,27 @@ You can find it by executing the command:
    ........................................................................
 
 
-.. note::
+If you do not have an existing SSH key, it is easy to make your own. For this class,
+we will name the SSH key generated for GitHub slightly different than the standard
+key name so as not to accidentally overwrite the keys we will use later on to log
+in to our Jetstream VMs.
 
-   If the ``~/.ssh/`` directory does not exist, you can create a new key specifically 
-   for GitHub as follows. (Paste the output of the second command into the GitHub
-   web interface to set up SSH authentication):
+.. code-block:: console
 
-   .. code-block:: console
+   [student-login]$ mkdir -p ~/.ssh/ && ssh-keygen -f ~/.ssh/github_rsa -t rsa -b 3072 -N ""
+   [student-login]$ cat ~/.ssh/github_rsa.pub
+   ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF8crdmqgk2GhRmsLPcREWjzc9zb2B....
+   ........................................................................
 
-      $ mkdir -p ~/.ssh/ && ssh-keygen -f ~/.ssh/github_rsa -t rsa -b 3072 -N ""
-      $ cat ~/.ssh/github_rsa.pub
+One other small caveat is that we must configure our systems to use this new
+key when connecting to GitHub. Open up ``~/.ssh/config`` with your favorite
+text editor and add the following two lines:
+
+.. code-block:: console
+
+    Host github.com
+      IdentityFile ~/.ssh/github_rsa_key
+   
 
 Once the SSH key is set up, this command will push the changes from our local
 repository to the repository on GitHub:
