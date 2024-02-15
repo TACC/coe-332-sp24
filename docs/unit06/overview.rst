@@ -11,7 +11,8 @@ called Flask.
    :maxdepth: 1
 
    intro_to_apis
+   intro_to_flask
 
 ..
-   intro_to_flask
    advanced_flask
+
