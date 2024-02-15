@@ -16,7 +16,7 @@ Here are just a few examples:
 
 * Waterfall Method -- Software tasks are organized into sets or "phases" with a linear ordering; tasks from each phase are
   completed before moving to the next phase. In practice, phases tended to be longer (on the order of weeks or months) for
-  larger projects than could span years. 
+  larger projects that could span years. 
 * Agile Method-- In contrast to Waterfall, Agile advocates smaller, complete software development life cycles, where "minimal"
   products are released and then incrementally improved. 
 * Test Driven Development -- Developers write tests asserting what the software should do before writing any software. 
@@ -70,7 +70,7 @@ allows different parts of the software to be modified independently and created 
 #2: Abstraction
 ~~~~~~~~~~~~~~~
 You likely already know the concept of abstraction from math and science courses. The real world is very complicated.
-With abstraction, we replace an exact concept with a simplified model. The Bohr Atom is an example of an abstraction of matter. 
+With abstraction, we replace an exact concept with a simplified model. For example, the Bohr model is an abstraction of the actual atom. 
 
 You have seen examples of abstractions in software also. For instance, we saw how the Python function ``open()`` returns
 a "file object" (cf., https://docs.python.org/3/glossary.html#term-file-object). A file object is an abstraction representing
@@ -98,7 +98,7 @@ of different sources, including:
 * Unix pipes 
 
 And more! That illustrates the power of abstraction: by learning just a few concepts and functions (e.g., ``open``, 
-``read``, ``write``, etc.) one is able to deal with all of this different kinds of data sources!
+``read``, ``write``, etc.) one is able to deal with all of these different kinds of data sources!
 
 
 #4: Portability and Reproducibility
