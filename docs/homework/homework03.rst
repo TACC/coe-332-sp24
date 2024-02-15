@@ -15,7 +15,7 @@ PART 1
 ~~~~~~
 
 First copy your Python3 scripts (including unit tests) from homework02 into a
-new homework03 folder. If you there are any errors or problems with any of your
+new homework03 folder. If you find that there are any errors or problems with any of your
 scripts from homework02, now would be a good time to fix them.
 
 Next, write a Dockerfile to containerize all of the scripts and unit tests that
