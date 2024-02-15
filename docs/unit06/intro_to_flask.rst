@@ -423,7 +423,7 @@ Now, the Flask app supports multiple routes with different functionalities:
 EXERCISE
 ~~~~~~~~
 
-Let's use the sample Meteorite Landing data (`see here <https://raw.githubusercontent.com/wjallen/turbidity/main/turbidity_data.json>`_)
+Let's use the sample Meteorite Landing data (`see here <https://raw.githubusercontent.com/TACC/coe-332-sp24/main/docs/unit02/sample-data/Meteorite_Landings.json>`_)
 to define some more interesting routes. We will create a route that allows a user
 to download the entire dataset over HTTP. Consider the following:
 
