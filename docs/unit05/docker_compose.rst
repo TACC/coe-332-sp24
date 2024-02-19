@@ -260,6 +260,8 @@ paste in the following text:
            build:
                context: ./
                dockerfile: ./Dockerfile-analysis
+           depends_on:
+               - gen-data
            image: username/ml_data_analysis:1.0
            volumes:
                - ./test:/data
