@@ -12,7 +12,8 @@ called Flask.
 
    intro_to_apis
    intro_to_flask
+   advanced_flask
 
 ..
-   advanced_flask
+   flask_docker
 
