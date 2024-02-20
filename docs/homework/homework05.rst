@@ -103,7 +103,7 @@ What to Turn In
 ---------------
 
 A sample Git repository may contain the following new files after completing
-homework03:
+homework05:
 
 .. code-block:: text
    :emphasize-lines: 10-14
@@ -120,6 +120,7 @@ homework03:
    ├── homework05
    │   ├── Dockerfile
    │   ├── README.md
+   │   ├── diagram.png
    │   ├── iss_tracker.py
    │   └── test_iss_tracker.py
    └── README.md
