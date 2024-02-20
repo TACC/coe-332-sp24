@@ -15,7 +15,7 @@ called ``homework05``.
 PART 1
 ~~~~~~
 
-Your Flask application will contain the same (or similar) unctionality as in
+Your Flask application will contain the same (or similar) functionality as in
 homework 04, but in this homework each functionality should be accessible by
 a Flask route. The following routes are required:
 
