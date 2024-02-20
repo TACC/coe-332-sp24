@@ -62,7 +62,7 @@ All of the normal Python3 script best practices apply:
 * Write appropriately formatted doc strings for your routes
 * Use type annotations where appropriate
 * Organize your code in the same way as the other scripts we have written
-* Write unit tests for all none ``main()`` functions
+* Write unit tests for all non ``main()`` functions
 * Implement selective logging and error handling where appropriate
 
 .. tip::
