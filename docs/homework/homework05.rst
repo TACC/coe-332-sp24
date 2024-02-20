@@ -106,7 +106,7 @@ A sample Git repository may contain the following new files after completing
 homework05:
 
 .. code-block:: text
-   :emphasize-lines: 10-14
+   :emphasize-lines: 10-15
 
    my-coe332-hws/
    ├── homework01
