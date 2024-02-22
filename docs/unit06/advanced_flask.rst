@@ -9,6 +9,7 @@ functions for our REST API. After going through this module, students should be 
 * Extract Content-Type and other headers from Flask route responses
 * Add query parameters to GET requests, and extract their values inside Flask routes
 * Deal with errors from user-supplied input to an API and handle Python exceptions
+* Handle multiple request methods to support CRUD operations
 
 .. note::
 
@@ -424,7 +425,7 @@ value for the ``start`` parameter? Try it and see what happens:
 
 .. code-block:: console
 
-   [user-vm]$ curl 127.0.0.1:5000/degrees?start=abc
+   [user-vm]$ curl http://127.0.0.1:5000/degrees?start=abc
 
 
 Yikes! If we try this we get a long traceback that ends like this:
@@ -516,11 +517,10 @@ Here is the full code for our route function with exception handling.
    def degrees():
        d = get_data()
        start = request.args.get('start', 0)
-       if start:
-           try:
-               start = int(start)
-           except ValueError:
-               return "Invalid start parameter; start must be an integer."
+       try:
+           start = int(start)
+       except ValueError:
+           return "Invalid start parameter; start must be an integer."
        data = get_data()
        result = []
        for d in data:
@@ -528,6 +528,12 @@ Here is the full code for our route function with exception handling.
                result.append(d)
        return result
 
+.. warning::
+
+   When curling a URL with multiple query parameters separated by an ``&`` symbol,
+   make sure to put the URL in quotes, e.g.:
+
+   ``curl 'http://127.0.0.1:5000/degrees?start=1990&limit=2'``
 
 
 EXERCISE 8
@@ -537,6 +543,97 @@ EXERCISE 8
 Add support for a ``limit`` parameter to the code you wrote for Exercise 7. The
 ``limit`` parameter should be optional. When passed with an integer value, the
 API should return no more than ``limit`` data points.
+
+
+CRUD Operations
+---------------
+
+To this point, we have looked at only the ``GET`` method. There are three other
+methods that are important to learn when working with REST APIs - ``PUT``, ``POST``,
+and ``DELETE``. Collectively, these four methods perform **CRUD** operations on our 
+data:
+
+* **C**\ reate: ``POST`` - add a new item to a collection
+* **R**\ ead: ``GET`` - get an item from a collection
+* **U**\ pdate: ``PUT`` - edit an existing item in a collection
+* **D**\ elete: ``DELETE`` - delete an item from a collection
+
+To implement one of these methods into a Flask route, the method first must be 
+listed in the decorator. Then, the function below the decorator must contain some
+logic to act according to the method and request. The Flask ``request`` library
+again comes in handy here. Suppose we want to add a ``DELETE`` method to our 
+``/degrees`` route. Consider the following reduced code:
+
+
+.. code-block:: python3
+   :linenos:
+   
+   from flask import Flask, request
+   
+   app = Flask(__name__)
+   data = [ {'id': 0, 'year': 1990, 'degrees': 5818},
+            {'id': 1, 'year': 1991, 'degrees': 5725},
+            {'id': 2, 'year': 1992, 'degrees': 6005},
+            {'id': 3, 'year': 1993, 'degrees': 6123},
+            {'id': 4, 'year': 1994, 'degrees': 6096} ]
+   
+   @app.route('/degrees', methods=['GET', 'DELETE'])
+   def degrees():
+       global data
+       if request.method == 'GET':
+           return(data)
+       elif request.method == 'DELETE':
+           content = request.get_json()
+           new_data = [] 
+           for item in data:
+               if item['id'] != content['id']:
+                   new_data.append(item)
+           data = new_data
+           return(data)
+   
+   if __name__ == '__main__':
+       app.run(debug=True, host='0.0.0.0')
+
+
+Note that data is now declared at the beginning of the script rather than returned 
+via a function call. And, on line 12 we use the ``global`` keyword to indicate that 
+references to ``data`` within the ``degrees()`` function (including changes) should 
+be made to the variable which belongs to the global scope.
+
+Curling this route with a ``GET`` request returns the entire list of degrees:
+
+.. code-block:: console
+
+   [user-vm]$ curl http://127.0.0.1:5000/degrees
+   -or-
+   [user-vm]$ curl -X GET http://127.0.0.1:5000/degrees
+
+But now we are able to make a ``DELETE`` request to this route, where it is expecting
+to receive a JSON data packet containing the id of the item to delete:
+
+.. code-block:: console
+
+   [user-vm]$ curl -X DELETE http://127.0.0.1:5000/degrees \
+                   -H 'Content-Type: application/json' \
+                   -d '{"id": 4}'
+
+The important changes here are that we are now specifying a delete request 
+(``-X DELETE``) instead of the default get request, the header (``-H``) flag is
+used to indicate that we are sending some data in JSON format (``'Content-Type: application/json'``),
+and finally the data packet that we send is just plain JSON (``-d '{"id": 4}'``).
+
+After invoking this delete request, perform another GET request on the ``/degrees``
+URL to see what has changed.
+   
+
+
+
+EXERCISE 9
+~~~~~~~~~~
+
+Add support for the ``PUT`` and ``POST`` methods to your ``/degrees`` route. 
+What information should be sent in the JSON data packet? What exception handling
+should be performed in the route?
 
 
 
