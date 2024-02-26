@@ -8,7 +8,7 @@ complex? For example, what if our goal is to orchestrate a multi-container
 application consisting of, e.g., a Flask app, a database, a message queue, an
 authentication service, and more.
 
-**Docker compose** is tool for managing multi-container applications. A YAML
+**Docker compose** is a tool for managing multi-container applications. A YAML
 file is used to define all of the application service, and a few simple commands
 can be used to spin up or tear down all of the services.
 
