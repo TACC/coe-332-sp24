@@ -91,7 +91,8 @@ As we saw in a previous section, we write up the recipe for our application
 installation process in a Dockerfile. Create a file called ``Dockerfile`` for our
 Flask microservice and add the following lines:
 
-.. code-block:: console
+.. code-block:: dockerfile
+   :linenos:
 
     FROM python:3.9
 
@@ -115,7 +116,8 @@ current working directory. Why did we do that?
 The answer has to do with how Docker caches image layers. We could have written the following
 instead:
 
-.. code-block:: console
+.. code-block:: dockerfile
+   :linenos:
 
     FROM python:3.9
 
@@ -289,6 +291,7 @@ paste in the following text:
            container_name: flask-helloworld-app
            ports:
                - "5000:5000"
+   ...
 
 .. note::
 

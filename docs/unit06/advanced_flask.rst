@@ -515,7 +515,6 @@ Here is the full code for our route function with exception handling.
 
    @app.route('/degrees', methods=['GET'])
    def degrees():
-       d = get_data()
        start = request.args.get('start', 0)
        try:
            start = int(start)
