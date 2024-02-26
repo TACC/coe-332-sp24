@@ -106,10 +106,12 @@ Consider some of the following exceptions:
    Traceback (most recent call last):
      File "<stdin>", line 1, in <module>
    ZeroDivisionError: division by zero
+
    >>> 4 + spam*3
    Traceback (most recent call last):
      File "<stdin>", line 1, in <module>
    NameError: name 'spam' is not defined
+
    >>> '2' + 2
    Traceback (most recent call last):
      File "<stdin>", line 1, in <module>
@@ -118,13 +120,25 @@ Consider some of the following exceptions:
 ZeroDivisionError, NameError, and TypeError are somewhat self explanatory when
 you see when they are raised. Knowing what circumstances can cause a built-in
 exception to occur (e.g. NameErrors are raised when a name is not found) is the
-first step toward identifying the cause and the solution
+first step toward identifying the cause and the solution. Some common situations
+that generate exceptions are:
+
+* Trying to open a file that does not exist raises a ``FileNotFoundError``.
+* Trying to divide by zero raises a ``ZeroDivisionError``.
+* Trying to access a list at an index beyond its length raises an ``IndexError``.
+* Trying to use an object of the wrong type in a function raises a ``TypeError`` (for example,
+  trying to call ``json.dumps()`` with an object that is not of type ``str``).
+* Trying to use an object with the wrong kind of value in a function raises a ``ValueError``
+  (for example, calling ``int('abc')``).
+* Trying to access a non-existent attribute on an object raises an ``AttributeError`` (a special
+  case is accessing a null/uninitialized object, resulting in the dreaded
+  ``AttributeError: 'NoneType' object has no attribute 'foo'`` error).
 
 A list of all built-in exceptions that could occur can be found `here <https://docs.python.org/3/library/exceptions.html>`_.
 
 .. note:: 
 
-    Note that syntax errors stand apart as exceptions that can't be handled:
+    Note that syntax errors stand apart as exceptions that can't be handled at runtime:
 
 .. code-block:: python3
 
@@ -139,12 +153,46 @@ A list of all built-in exceptions that could occur can be found `here <https://d
 Handling Exceptions
 -------------------
 
-Consider our meteorite landings data again. We can use a strategy called 
-*exception handling* to prevent our program from crashing if it encounters bad
-input data. The specific statements we use for this in Python3 are ``try`` and
-``except``.
+We can use a strategy called *exception handling* to prevent our program from
+crashing if it encounters an exception during runtime. The specific statements
+we use for this in Python3 are ``try`` and ``except``. In general, it follows 
+the format:
 
-Take the original ``compute_average_mass`` function:
+.. code-block:: python
+
+    try:
+        # execute some statements that could raise an exception...
+        f(x, y, z)
+    except ExceptionType1 as e:
+        # do something if the exception was of type ExceptionType1...
+    except ExceptionType2 as e:
+        # do something if the exception was of type ExceptionType2...
+
+    # . . . additional except blocks . . .
+
+    finally:
+        # do something regardless of whether an exception was raised or not.
+
+A few notes:
+
+* If a statement(s) within the ``try`` block does not raise an exception, the
+  ``except`` blocks are skipped.
+* If a statement within the ``try`` block does raise an exception, Python looks
+  at the ``except`` blocks for the first one matching the type of the exception
+  raised and executes that block of code.
+* The ``finally`` block is optional but it executes regardless of whether an
+  exception was raised by a statement or not.
+* The ``as e`` clause puts the exception object into a variable (``e``) that we
+  can use.
+* The use of ``e`` was arbitrary; we could choose to use any other valid variable
+  identifier.
+* We can also leave off the ``as e`` part altogether if we don't need to reference
+  the exception object in our code.
+
+
+
+Consider again our meteorite landing data, and the original ``compute_average_mass``
+function:
 
 .. code-block:: python3
    :linenos:
@@ -175,10 +223,6 @@ And update it as follows:
        return(total_mass / num_of_valid_masses)
 
 
-What happens here is that the lines inside the ``try`` block are executed. If no
-exception is raised, then the ``except`` block is skipped and the code continues to
-the next iteration of the for loop.
-
 If a ``TypeError`` is raised in the ``try`` block, (i.e. beause ``item[a_key_string]``
 is not a float) then that exception is handled by
 executing the lines in the ``except`` block. In this case, a message is logged and
@@ -201,15 +245,51 @@ With this modified function, we can execute our lines of code from above:
    WARNING: encountered non-float value None in compute_average_mass_new
    23.333333333333332
 
-See the resources below for tips on building more complicated try-except statements
-that can handle multiple different exceptions, and use the ``finally`` statement
-to execute code after the block whether an exception was raised or not.
+
+Exception Hierarchy
+-------------------
+
+Exceptions form a class hierarchy with the base ``Exception`` class being at the root. So,
+for example:
+
+* ``FileNotFoundError`` is a type of ``OSError`` as is ``PermissionError``, which is raised in case
+  the attempted file access is not permitted by the OS due to lack of permissions.
+* ``ZeroDivisionError`` and ``OverflowError`` are instances of ``ArithmeticError``, the latter
+  being raised whenever the result of a calculation exceeds the limits of what can be represented
+  (try running ``2.**5000`` in a Python shell).
+* Every built-in Python exception is of type ``Exception``.
+
+Therefore, we could use any of the following to deal with a ``FileNotFoundError``:
+
+* ``except FileNotFoundError``
+* ``except OSError``
+* ``except Exception``
+
+
+Here are some best practices to keep in mind for handling exceptions:
+
+* Put a minimum number of statements within a ``try`` block so that you can detect which
+  statement caused the error.
+* Similarly, put the most specific exception type in the ``except`` block that is appropriate
+  so that you can detect exactly what went wrong. Using ``except Exception...`` should
+  be seen as a last resort
+  because an ``Exception`` could be any kind of error.
+
+
+See the resources below for tips on building more complicated try-except statements.
+
 
 Additional Resources
 --------------------
 
 * `Python 3 Error Handling <https://docs.python.org/3/tutorial/errors.html>`_
 * `Python 3 Exception Class <https://docs.python.org/3/library/exceptions.html>`_
+
+
+
+
+
+
 
 
 
