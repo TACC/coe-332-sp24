@@ -122,7 +122,7 @@ sending a message, and servers respond by sending a message back to the client.
 
 HTTP is an "application layer" protocol in the language of the
 Internet Protocols; it assumes a lower level transport layer protocol. While
-this can swapped, in practice it is almost always TCP. The basics of the
+this can swapped, in practice it is almost always TCP (Transmission Control Protocol). The basics of the
 protocol are:
 
 * Web resources are identified with URLs (Uniform Resource Locators).
@@ -196,7 +196,7 @@ responses.
 The basic idea with REST is to associate objects in the application domain with URLs,
 and to use HTTP verbs to represent the actions we want to take on the objects.
 A REST API has a **base URL** from which all other URLs in
-that API are formed. For example, the base URL for the GitHub REST API which will look
+that API are formed. For example, the base URL for the GitHub REST API which we will look
 at in more detail momentarily is ``https://api.github.com/``.
 
 
