@@ -477,7 +477,7 @@ If it is not numeric, we can return an error message to the user.
     def degrees():
         start = request.args.get('start', 0)
         if not start.isnumeric():
-            return "Error: start must be an integer"
+            return "Error: start must be an integer\n"
         start = int(start)
         data = get_data()
         result = []
