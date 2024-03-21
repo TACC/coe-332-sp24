@@ -255,9 +255,49 @@ In the same test script, but under new test function definitions:
 * Write tests for the ``count_classes()`` function
 
 
+Capturing Standard Out
+----------------------
+
+If you have a function that prints to standard out (stdout), we can write a 
+unit test for that using the ``capsys`` utility. Imagine a function that takes
+an argument and prints something to screen:
+
+.. code-block:: python3
+   :linenos:
+
+   def print_func(num):      
+       print(f'hello {num}') 
+                          
+   def main():               
+       print_func(5)         
+                          
+   if __name__ == '__main__':
+       main()    
+
+Executing this code prints ``hello 5`` to screen. To write a unit test for this,
+we import the function into our test script, call the function normally, then
+capture the response using the ``capsys.readouterr()`` method. Then we assert that
+the response matches our expectations. Assume the above Python code is in a script
+called ``print_hello.py``.
+
+.. code-block:: python3
+   :linenos:
+
+   from print_hello import print_func   
+                                      
+   def test_print_func(capsys):          
+       print_func(1)                     
+       captured = capsys.readouterr()    
+       assert captured.out == 'hello 1\n'
+
+Notice that we put a newline character (``\n``) at the end of the expected output.
+This character is automatically added by the ``print`` function. See the additional
+resources below for more information on using ``capsys``.
+
 
 Additional Resources
 --------------------
 
-* `Pytest documentation <https://docs.pytest.org/>`_
+* `Pytest Documentation <https://docs.pytest.org/>`_
 * `Exceptions in Python <https://docs.python.org/3.8/library/exceptions.html>`_
+* `Capsys Examples <https://docs.pytest.org/en/7.1.x/how-to/capture-stdout-stderr.html>`_
