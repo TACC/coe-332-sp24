@@ -421,6 +421,41 @@ EXERCISE 3
 
 
 
+
+Redis Python API Cheat Sheet
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
++------------------------------+---------------------------------------+
+| Command                      | Effect                                |
++==============================+=======================================+
+| ``import redis``             | Import Redis library                  |
++------------------------------+---------------------------------------+
+| ``rd = redis.Redis()``       | Create a redis client, defaults to    |
+|                              | (host=localhost, port=6379, db=0)     |
++------------------------------+---------------------------------------+
+| ``rd.set('k', 'v')``         | Set key ``k`` to value ``v``          |
++------------------------------+---------------------------------------+
+| ``rd.get('k')``              | Get value associated with ``k``       |
++------------------------------+---------------------------------------+
+| ``rd.hset('k1', 'k2', 'v')`` | Set key ``k1`` to hash value ``k2:v`` |
++------------------------------+---------------------------------------+
+| ``rd.hset('k1', mapping=d)`` | Set key ``k1`` to hash value ``d``,   |
+|                              | where ``d`` is a Python dictionary    |
++------------------------------+---------------------------------------+
+| ``rd.hget('k1', 'k2')``      | Get value associated with ``k2`` in   |
+|                              | hash stored at ``k1``                 |
++------------------------------+---------------------------------------+
+| ``rd.hgetall('k1')``         | Get all key / value pairs in hash     |
+|                              | stored at ``k1``                      |
++------------------------------+---------------------------------------+
+| ``rd.keys()``                | Return list of keys                   |
++------------------------------+---------------------------------------+
+| ``rd.delete('k')``           | Delete key / value pair associated    |
+|                              | with key ``k``                        |
++------------------------------+---------------------------------------+
+
+
+
 Additional Resources
 --------------------
 
@@ -428,3 +463,4 @@ Additional Resources
 * `Redis Python Library <https://redis-py.readthedocs.io/en/stable/>`_
 * `Try Redis in a Browser <https://try.redis.io/>`_
 * `Semantic Versioning <https://semver.org/>`_
+
