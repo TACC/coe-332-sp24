@@ -2,7 +2,7 @@ Concurrency and Queues
 ======================
 
 We begin with an introduction to the concept of concurrency and a basic treatment of the queue data structure.
-By the end of this the module, the student should be able to:
+By the end of this the module, students should be able to:
 
   * Describe concurrency and some basic examples of concurrent and nonconcurrent algorithms.
   * Explain at a high level how concurrency will be used to implement a long-running task in our 
