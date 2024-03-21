@@ -353,6 +353,7 @@ Consider the following update to your Docker compose file from Unit 5:
             volumes:
                 - ./data:/data
             user: "1000:1000"
+            command: ["--save", "1", "1"]
         flask-app:
             build:
                 context: ./
