@@ -83,8 +83,8 @@ Complete the following on your JetStream VM.
 EXERCISE 2
 ~~~~~~~~~~
 
-Repeat the above steps, but this time orchestrate two containers together using ``docker-compose``: a Redis
-container and a "worker" container which, at this stage, is just a standard Python base image. 
+Repeat the above steps, but this time orchestrate three containers together using ``docker-compose``: a Redis
+container and two other Python containers which may simulate, for example, a Flask app and a worker. 
 
 .. code-block:: yaml
 
@@ -100,7 +100,10 @@ container and a "worker" container which, at this stage, is just a standard Pyth
                - 6379:6379
            user: "1000:1000"
            command: ["--save", "1", "1"]
-       worker:
+       python1:
+           image: python:3.10
+           command: ["sleep", "9999999"]
+       python2:
            image: python:3.10
            command: ["sleep", "9999999"]
 
@@ -111,21 +114,31 @@ the command:
 .. code-block:: console
 
    [user-vm]$ docker-compose up -d
-   Creating network "worker_default" with the default driver
-   Creating worker_worker_1   ... done
-   Creating worker_redis-db_1 ... done
+   Creating network "messaging_default" with the default driver
+   Creating messaging_redis-db_1 ... done
+   Creating messaging_python2_1  ... done
+   Creating messaging_python1_1  ... done
+
 
 Once the containers are running, use ``docker ps -a`` to find the names of the container, and ``docker exec``
-to create a new shell inside the running worker:
+to create two new shells inside the running containers:
 
 .. code-block:: console
 
-   [user-vm]$ docker exec -it worker_worker_1 /bin/bash
+   # From terminal 1
+   [user-vm]$ docker exec -it messaging_python1_1 /bin/bash
    root@ba734c20dfe3:/#
+
+.. code-block:: console
+
+   # From terminal 2
+   [user-vm]$ docker exec -it messaging_python2_1 /bin/bash
+   root@22ca40c5cf18:/# 
+
 
 .. note::
 
-   Once inside the running worker container, what IP / alias do you use to refer to the Redis container?
+   Once inside the running containers, what IP / alias do you use to refer to the Redis container?
    What libraries might you have to pip install?
 
 When finished with the exercise, clean up your running containers by doing:
@@ -133,17 +146,19 @@ When finished with the exercise, clean up your running containers by doing:
 .. code-block:: console
 
    [user-vm]$ docker-compose down
-   Stopping worker_worker_1   ... done
-   Stopping worker_redis-db_1 ... done
-   Removing worker_worker_1   ... done
-   Removing worker_redis-db_1 ... done
-   Removing network worker_default
+   Stopping messaging_python2_1  ... done
+   Stopping messaging_python1_1  ... done
+   Stopping messaging_redis-db_1 ... done
+   Removing messaging_python2_1  ... done
+   Removing messaging_python1_1  ... done
+   Removing messaging_redis-db_1 ... done
+   Removing network messaging_default
 
 
-The q.worker Decorator
-^^^^^^^^^^^^^^^^^^^^^^
+The @q.worker Decorator
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Given a Hotqueue queue object, ``q``, the ``q.worker`` decorator is a convenience utility to turn a function into a consumer
+Given a HotQueue queue object, ``q``, the ``@q.worker`` decorator is a convenience utility to turn a function into a consumer
 without having to write a for loop. The basic syntax is:
 
 .. code-block:: python3
@@ -179,7 +194,7 @@ In practice, we will use the ``@q.worker`` in a Python source file like so --
 .. code-block:: python
 
    # A simple example of Python source file, worker.py
-   q = HotQueue("some_queue", host="<Redis_IP>", port=6379, db=1)
+   q = HotQueue('queue', host='<Redis_IP>', port=6379, db=1)
 
    @q.worker
    def do_work(item):
@@ -189,7 +204,7 @@ In practice, we will use the ``@q.worker`` in a Python source file like so --
 
 
 Assuming the file above was saved as ``worker.py``, calling ``python worker.py`` from the shell would result in a
-non-terminating program that "processed" the items in the ``"some_queue"`` queue using the ``do_work(item)`` function.
+non-terminating program that "processed" the items in the ``"queue"`` queue using the ``do_work(item)`` function.
 The only thing that would cause our worker to stop is an unhandled exception.
 
 
