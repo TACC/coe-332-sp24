@@ -357,3 +357,10 @@ a connection to the same Redis container. Prove to yourself that you can add ite
 and retrieve items from the queue in the other terminal. This represents a form of "communication" between two
 Python programs.
 
+
+
+
+Additional Resources
+--------------------
+
+* `HotQueue <https://pypi.org/project/hotqueue/>`_
