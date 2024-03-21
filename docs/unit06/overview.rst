@@ -1,5 +1,5 @@
-Unit 6: Introduction to APIs and Flask
-======================================
+Unit 6: APIs and Flask
+======================
 
 In this unit, we will be introduced to Application Programming Interfaces
 (APIs). This introduction will form the foundation of our ultimate goal to

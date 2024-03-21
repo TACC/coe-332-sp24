@@ -1,5 +1,5 @@
-Unit 7: Introduction to Databases, Persistence, and Redis
-=========================================================
+Unit 7: Databases, Persistence, and Redis
+=========================================
 
 In this unit, we will implement a Redis database to store our data sets
 such that they persist beyond the lifetime of our application containers.
