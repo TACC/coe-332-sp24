@@ -363,8 +363,6 @@ Consider the following update to your Docker compose file from Unit 5:
             image: username/ml_flask_app:1.0
             ports:
                 - 5000:5000
-            volumes:
-                - ./config.yaml:/config.yaml
 
 
 One thing to note is a new specification under the ``flask-app`` service called '``depends_on``'. 
