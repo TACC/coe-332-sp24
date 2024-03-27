@@ -72,7 +72,7 @@ data associated with a single dictionary. There are often design questions one s
 new code. In this case, we have:
 
   * What method(s) should it accept? 
-  * What type will the incoming ``id`` field by from the user? 
+  * What type will the incoming ``id`` field be from the user? 
   * How will you find the corresponding dictionary? 
   * What should happen if the user enters an ``id`` that doesn't exist?
 
@@ -151,7 +151,7 @@ Responses in Flask
 Suppose we wanted to add a third route that just returns a single value, the number of degrees associated with a 
 a particular dictionary. We might proceed as follows:
 
-  * For URL path, use ``/degrees/<int:id>/degrees``
+  * For the URL path, use ``/degrees/<int:id>/degrees``
   * Iterate through the list looking for the dictionary with the same id as the input. 
   * If we find a dictionary, ``d``, with the same id, return ``d['degrees']``.
 
@@ -350,7 +350,7 @@ For example, consider the following line of Python code:
 
    start = request.args.get('start')
 
-In this case, the start variable will be the value of the start parameter, if one is passed, or it 
+In this case, the start variable will be the value of the start parameter if one is passed, or it 
 will be None otherwise.
 
 .. note::
