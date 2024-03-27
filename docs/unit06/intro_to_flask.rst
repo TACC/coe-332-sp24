@@ -126,7 +126,7 @@ Run the Flask App
 
 There are a few options when starting the Flask app. For now, we recommend you
 start your Flask application using the ``flask run`` command, specifying the name 
-of the python file (in our case ``app.py``) using the ``--app`` option, and 
+of the Python file (in our case ``app.py``) using the ``--app`` option, and 
 running in debug mode using the ``--debug`` flag.
 
 .. code-block:: console
@@ -172,7 +172,7 @@ on the default Flask port, port ``5000``.
 Ports Basics
 ~~~~~~~~~~~~
 
-Ports are a concept from networking that allow multiple services or programs to
+Ports are a concept from networking that allows multiple services or programs to
 be running at the same time, listening for messages over the internet, on the
 same computer.
 
