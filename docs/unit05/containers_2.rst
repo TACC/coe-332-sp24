@@ -76,7 +76,7 @@ code for the first time:
 
 1. What is an appropriate base image?
 2. What dependencies are required for my program?
-3. What is the install process for my program?
+3. What is the installation process for my program?
 4. What environment variables may be important?
 
 We can work through these questions by performing an **interactive installation**
@@ -113,7 +113,7 @@ Update and Upgrade
 
 The first thing we will typically do is use the Ubuntu package manager ``apt``
 to update the list of available packages and install newer versions of the
-packages we have. We can do this with:
+packages we have installed. We can do this with:
 
 .. code-block:: console
 
@@ -185,7 +185,7 @@ And change the ``with open...`` statements to these, as appropriate:
 
 
 Since we are using a simple Python script, there is not a difficult install
-process. However, we can make it executable and add it to them user's `PATH`.
+process. However, we can make it executable and add it to the user's `PATH`.
 
 .. code-block:: console
 
@@ -441,7 +441,7 @@ time.
 
 We should pause at this moment to think about how we want to distribute this
 application. Should the data be encapsulated within? Or should we expect potential
-users to be brining their own data for analysis?
+users to be bring their own data for analysis?
 
 Let's try again, but this time mount the data inside the container so we can
 access it. If we mount the current folder as, e.g., ``/data``, then everything
