@@ -301,7 +301,7 @@ ID, execute the Linux commands ``id -u`` and ``id -g``.
 Running Docker Compose
 ----------------------
 
-The Docker compose command line too follows the same syntax as other Docker
+The Docker compose command line tool follows the same syntax as other Docker
 commands:
 
 .. code-block:: console
@@ -350,7 +350,7 @@ Essential Docker Compose Command Summary
 +------------------------+------------------------------------------------+
 | Command                | Usage                                          |
 +========================+================================================+
-| docker-compose version | Print version information                      |
+| docker-compose version | Prints version information                      |
 +------------------------+------------------------------------------------+
 | docker-compose config  | Validate docker-compose.yml syntax             |
 +------------------------+------------------------------------------------+
