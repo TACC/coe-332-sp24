@@ -21,7 +21,7 @@ should be able to:
 Recap: Start a Redis Container
 ------------------------------
 
-Recall from last time we started a Redis container and mapped port ``6379``
+Recall from last time when we started a Redis container and mapped port ``6379``
 inside the container to port ``6379`` on the host. This allows us to interact
 with the Redis server on that port.
 
@@ -157,7 +157,7 @@ Save Data to File Periodically
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We can use bind mounts to persist Redis data across container executions: the key point is that Redis
-can be started in a mode so that it periodically writes all of its data to the host.
+can be started in a mode such that it periodically writes all of its data to the host.
 
 From the `Redis documentation <https://redis.io/docs/management/persistence/>`_, we see that we need to
 set the ``--save`` flag when starting Redis so that it writes its dataset to the file system periodically.
@@ -269,7 +269,7 @@ For example, I might use:
 
   [user-vm]$ docker run -d -p 6379:6379 -v $PWD/data:/data:rw redis:7 --save 1 1
 
-Now, Redis should periodically write all of its state to the ``data`` directory. You should see a
+Now, Redis should be periodically writing all of its state to the ``data`` directory. You should see a
 file called ``dump.rdb`` in the directory because we are using the default persistence mechanism
 for Redis. This will suffice for our purposes, but Redis has other options for persistence which
 you can read about `here <https://redis.io/docs/management/persistence/>`_ if interested.
