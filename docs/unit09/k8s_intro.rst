@@ -170,6 +170,24 @@ This is the output we expect because we would not have access to that user's pod
 To see more information about how k8s and the kubectl CLI is configured in your environment,
 inspect the file located at ``~/.kube/config``.
 
+To install the k8s CLI on your Jetstream instance, log in to Jetstream and issue the following 
+commands (replacing USERNAME with your username):
+
+.. code-block:: console
+
+   [user-vm]$ sudo curl -LO "https://dl.k8s.io/release/v1.28.5/bin/linux/amd64/kubectl"
+   [user-vm]$ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+   [user-vm]$ scp -r USERNAME@student-login.tacc.utexas.edu:~/.kube ./
+
+To confirm whether it worked, try the following commands:
+
+.. code-block:: console
+
+   [user-vm]$ kubectl version --client
+   Client Version: v1.28.5
+   Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
+   [user-vm]$ kubectl get pods
+   No resources found in USERNAME namespace.
 
 
 
