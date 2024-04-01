@@ -4,7 +4,7 @@ The Jobs API
 We have been introduced to the concept of *concurrency*: a method for managing resources such that multiple agents or
 components of the system can be in progress at the same time without impacting the correctness of the system.
 We have also discussed the utility of *asynchronicity*: an approach in concurrency wherein we can schedule a task,
-recieve an immediate response, and continue on to other tasks while the previous task works in the background. The
+receive an immediate response, and continue on to other tasks while the previous task works in the background. The
 tools we will use to achieve this in the software systems we are building include worker containers, a messaging
 system, a task queue, and now the *Jobs API*. 
 
@@ -18,7 +18,7 @@ it gets to the top of the queue. Also, critically, the  response will include an
 check the status and, eventually, get the actual result. *The Jobs API is a Python module that we will write which includes
 methods and tools for managing jobs in our software system.*
 
-By the end of this the module, students should be able to:
+By the end of this module, students should be able to:
 
   * Explain the purpose and reasoning behind all variables and methods in Jobs API
   * Decide which variables and methods should be private and which should be public
