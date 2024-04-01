@@ -125,7 +125,7 @@ system, user-added files, metadata.
 Image
 ~~~~~
 
-A Docker images is a read-only file used to produce Docker containers. It is
+A Docker image is a read-only file used to produce Docker containers. It is
 comprised of layers of other images, and any changes made to an image can only
 be saved and propagated on by adding new layers. The "base image" is the
 bottom-most layer that does not depend on any other layer and typically defines,
@@ -228,7 +228,7 @@ through the process of listing images that are currently available on your stude
 server, we will pull a 'hello-world' image from Docker Hub, then we will run the
 'hello-world' image to see what it says.
 
-List images on your server with the ``docker images`` command. This peaks
+List images on your server with the ``docker images`` command. This peeks
 into the Docker daemon, to see which images are available, when they were created, 
 and how large they are:
 
@@ -395,7 +395,7 @@ Here is an explanation of the command options:
   python           # use the official python image 
   /bin/bash        # execute the bash shell program inside container
 
-Try the following commands - the same commands you did above before staring the
+Try the following commands - the same commands you did above before starting the
 interactive shell in the container - and note what has changed:
 
 .. code-block:: console
