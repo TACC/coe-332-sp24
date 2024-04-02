@@ -2,7 +2,7 @@ Concurrency and Queues
 ======================
 
 We begin with an introduction to the concept of concurrency and a basic treatment of the queue data structure.
-By the end of this the module, students should be able to:
+By the end of this module, students should be able to:
 
   * Describe concurrency and some basic examples of concurrent and nonconcurrent algorithms.
   * Explain at a high level how concurrency will be used to implement a long-running task in our 
@@ -181,7 +181,7 @@ And the contents of the Queue after Step 8 is
 In-memory Python Queues
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The Python standard library provides an in-memory Queue data structure via its ``queue`` module. To get started, import the
+The Python standard library provides an in-memory queue data structure via its ``queue`` module. To get started, import the
 ``queue`` module and instantiate a ``queue.Queue`` object:
 
 
