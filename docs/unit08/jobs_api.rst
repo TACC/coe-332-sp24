@@ -35,7 +35,7 @@ We will implement our Jobs API with concurrency in mind. The goals will be:
 
 The overall architecture will thus be:
 
-  1. Save the request in a database and respond to the user that the analysis will eventually be run.
+  1. Our goal is to save the request in a database and respond to the user that the analysis will eventually be run.
   2. Give the user a unique identifier with which they can check the status of their job and fetch the results when
      they are ready,
   3. Queue the job to run so that a worker can pick it up and run it.
@@ -284,7 +284,7 @@ EXERCISE 3
 Write a skeleton for a worker in the file ``worker.py``: The worker should:
 
   1. Import necessary modules, including some from ``jobs.py``
-  2. Pull items (job IDs) off the queue
+  2. Pull items (job IDs) from the queue
   3. When it starts working on a new job, update the job status to 'in progress'
   4. Do work (e.g. sleep for 15 seconds)
   5. When it finishes working on a new job, update the job status to 'complete'
@@ -302,7 +302,7 @@ EXERCISE 5
 ~~~~~~~~~~
 
 Modify the definition of the ``rd``, ``q``, and ``jdb`` objects to not use a hard-coded IP address,
-but to instead read the IP address from an environment variable, ``REDIS_IP``. Determine how to set the value of
+but instead read the IP address from an environment variable, ``REDIS_IP``. Determine how to set the value of
 ``REDIS_IP`` in the ``Dockerfile`` and / or ``docker-compose.yml`` file.
 
 
