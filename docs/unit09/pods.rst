@@ -38,16 +38,16 @@ Create a file called ``pod-basic.yml``, open it up in an editor and paste the fo
 .. code-block:: yaml
    :linenos:
 
-    ---
-    apiVersion: v1
-    kind: Pod
-    metadata:
-      name: hello
-    spec:
-      containers:
-        - name: hello
-          image: ubuntu:22.04
-          command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']
+   ---
+   apiVersion: v1
+   kind: Pod
+   metadata:
+     name: hello
+   spec:
+     containers:
+       - name: hello
+         image: ubuntu:22.04
+         command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']
 
 Let's break this down. The top four attributes are common to all k8s resource descriptions:
 
