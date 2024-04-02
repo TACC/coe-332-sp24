@@ -240,7 +240,7 @@ We can use ``kubectl logs <pod_name>`` command to get the logs associated with a
    [user-vm]$ kubectl logs hello
    Hello, Kubernetes!
 
-Note that the ``logs`` command does not include the resource name ("pods") because it only can be applied to pods. The
+Note that the ``logs`` command does not include the resource name ("pods") because it can only be applied to pods. The
 ``logs`` command in k8s is equivalent to that in Docker; it returns the standard output (stdout) of the container.
 
 
@@ -324,7 +324,7 @@ Finally, we can delete a running pod using ``kubectl delete pods <pod_name>``:
    [user-vm]$ kubectl delete pods hello
    pod "hello" deleted
 
-The pod (and the container running inside the pod) has been removed from the k8s cluster. Another safe way to delete a pod
+The pod (and the container running inside the pod) have been removed from the k8s cluster. Another safe way to delete a pod
 is to pass ``kubectl delete`` the YAML file describing the pod. In this case, you do not in include the resource name
 ("pods") because that is inferred from the contents of the YAML file.
 
