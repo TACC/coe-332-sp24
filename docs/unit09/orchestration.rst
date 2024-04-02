@@ -40,7 +40,7 @@ and number of components grows, some systems may encounter additional challenges
 Orchestration Systems
 ---------------------
 
-Orchestration systems are built to help with one ore more of the above challenges.
+Orchestration systems are built to help with one or more of the above challenges.
 Below we briefly cover some of the more popular, open-source container orchestration systems. This is by no means an
 exhaustive list.
 
@@ -82,7 +82,7 @@ HPC applications.
 Nomad
 ~~~~~
 
-Nomad by Hashicorp is an orchestration system that can handle both containerized and non-containerized
+Nomad by HasiCorp is an orchestration system that can handle both containerized and non-containerized
 workloads. Nomad has been gaining popularity recently as an alternative to Kubernetes. Compared with 
 Kubernete, Nomad offers a significantly simpler usage model but requires more work by the user to 
 achieve some functionalities available in Kubernetes.
