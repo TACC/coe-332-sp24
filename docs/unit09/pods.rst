@@ -341,7 +341,7 @@ because it is a shared resource among the whole class.
 .. code-block:: console
 
    [user-vm]$ kubectl get pods
-   No resources found in wallen namespace.
+   No resources found in USERNAME namespace.
 
 
 
