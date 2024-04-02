@@ -15,9 +15,9 @@ to the application deployment over time.
 
    orchestration
    k8s_intro
+   pods
 
 ..
-   pods
    deployments
    services
    publicip
