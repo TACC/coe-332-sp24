@@ -350,7 +350,7 @@ Essential Docker Compose Command Summary
 +------------------------+------------------------------------------------+
 | Command                | Usage                                          |
 +========================+================================================+
-| docker-compose version | Prints version information                      |
+| docker-compose version | Print version information                      |
 +------------------------+------------------------------------------------+
 | docker-compose config  | Validate docker-compose.yml syntax             |
 +------------------------+------------------------------------------------+
