@@ -128,7 +128,7 @@ namespace where their k8s objects would live, and users wouldn't have access to 
 
 That is how the class Kubernetes cluster has been set up. Each of you has been assigned your own namespace
 in the Kubernetes cluster where you have administrative access. Inside that namespace, you can create
-and manage the Kubernetes objects for your application. And while all of the Kubernetes objects for every 
+and manage the Kubernetes objects of your application. And while all of the Kubernetes objects for every 
 student is running on the same cluster, you won't see or have access to the objects in different namespaces.
 
 We haven't introduced `pods` yet -- we will shortly -- but let's try a simple experiment: issue 
