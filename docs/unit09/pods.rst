@@ -314,6 +314,22 @@ We can also just use the label name to filter with the syntax ``--selector "<lab
 the label ``<label_name>``, regardless of the value.
 
 
+Exec into a Container inside a Pod
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Just like with the Docker CLI, the kubectl CLI provides a means to attach your terminal to a shell inside a 
+running container. This is a useful way to debug a pod or test connections between pods. Assuming you have a
+pod named `hello`, try:
+
+.. code-block:: console
+
+   [user-vm]$ kubectl exec -it hello -- /bin/bash
+   root@hello:/#
+
+From there, type ``logout`` or press ``Ctrl+D`` to return to the command line.
+
+
+
 Delete a Pod
 ~~~~~~~~~~~~
 
