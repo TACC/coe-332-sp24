@@ -5,12 +5,12 @@ In this section we give an overview of the first major Kubernetes abstraction, t
 
 After going through this module, students should be able to:
 
-* Connect to the class Kubernetes cluster and issue basic commands using ``kubectl``.
-* Describe a Kubernetes pod in a yaml file and use ``kubectl`` to deploy the pod to the cluster.
-* Retrieve details about the pod including status and logs. 
-* Use labels to organize pods deployed to the Kubernetes cluster.
+* Connect to the class Kubernetes cluster and issue basic commands using ``kubectl``
+* Describe a Kubernetes pod in a yaml file and use ``kubectl`` to deploy the pod to the cluster
+* Retrieve details about the pod including status and logs
+* Use labels to organize pods deployed to the Kubernetes cluster
 * **Design Principles**. Kubernetes improves our software portability, particularly 
-  for large distributed applications that need to run across multiple machines.
+  for large distributed applications that need to run across multiple machines
 
 
 Introduction to Pods
