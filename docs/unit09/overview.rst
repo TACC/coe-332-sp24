@@ -16,9 +16,10 @@ to the application deployment over time.
    orchestration
    k8s_intro
    pods
+   deployments
+   pvcs
 
 ..
-   deployments
    services
    publicip
    k8s_cheat_sheet
