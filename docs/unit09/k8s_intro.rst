@@ -9,7 +9,7 @@ After going through this module, students should be able to:
 * Issue basic commands using ``kubectl``
 * Connect to the class Kubernetes cluster and 
 * **Design Principles**. Kubernetes improves our software portability, particularly 
-  for large distributed applications that need to run across multiple machines.
+  for large distributed applications that need to run across multiple machines
 
 
 Kubernetes Overview
