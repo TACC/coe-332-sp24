@@ -319,5 +319,4 @@ Additional Resources
 --------------------
 
  * `Persistent Volumes <https://kubernetes.io/docs/concepts/storage/persistent-volumes/>`_
- * `NFS Storage class in k8s <https://kubernetes.io/docs/concepts/storage/storage-classes/#nfs>`_
- * `Ceph RBD Storage class in k8s <https://kubernetes.io/docs/concepts/storage/storage-classes/#ceph-rbd>`_
+ * `Storage Classes in k8s <https://kubernetes.io/docs/concepts/storage/storage-classes>`_

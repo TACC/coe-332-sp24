@@ -18,9 +18,10 @@ to the application deployment over time.
    pods
    deployments
    pvcs
+   services
+   k8s_cheat_sheet
 
 ..
-   services
    publicip
-   k8s_cheat_sheet
+   
 
