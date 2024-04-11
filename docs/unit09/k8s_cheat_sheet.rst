@@ -58,3 +58,9 @@ Here we collect some of the most commonly used ``kubectl`` commands for quick re
 | kubectl apply -f <file>            | Create or update an object  | kubectl apply -f hello-pod.yml           |
 |                                    | description using a file.   |                                          |
 +------------------------------------+-----------------------------+------------------------------------------+
+| kubectl delete <type> <name>       | Delete an object of a given | kubectl delete pods hello-pod            |
+|                                    | type by name.               |                                          |
++------------------------------------+-----------------------------+------------------------------------------+
+| kubectl delete -f <file>           | Delete an object using a    | kubectl delete -f hello-pod.yml          |
+|                                    | file.                       |                                          |
++------------------------------------+-----------------------------+------------------------------------------+
