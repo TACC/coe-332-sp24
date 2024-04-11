@@ -308,6 +308,34 @@ the overhead can be significant.
 
 
 
+EXERCISE
+~~~~~~~~
+
+Now, you have enough tools in your k8s toolbox to deploy your entire web app on the k8s cluster. Follow the steps 
+below to try to launch your web app. In each step, you will be creating a new k8s resource described by its own
+k8s yaml file. We recommend carefully naming the files following a pattern like ``<name>-<env>-<resource>-<item>.yml``.
+In this case ``<name>`` is the name of your app, ``<env>`` is the environment - test or prod, ``<resource>`` is the 
+k8s resource used - e.g. deployment or service or pvc, and ``<item>`` is the identity of the service - e.g. flask or
+redis or worker. For example, imagine you are creating a deployment for the Flask front end for the test copy of an
+web app for analyzing the HGNC data. You might name this yaml file ``HGNC-test-deployment-flask.yml``. Other naming
+schemes for these files are perfectly valid as long as there is *consistency* among them.
+
+
+* **Step 1:** Create a PVC for Redis to write dump files
+* **Step 2:** Create a deployment for your Redis database which binds the PVC from Step 1
+* **Step 3:** Create a service for your Redis deployment so you have a persistent IP address to use to communicate with Redis
+* **Step 4:** Create a deployment for your Flask API 
+* **Step 5:** Create a service for your Flask API so you have a persistent IP address to use to communicate with Flask
+* **Step 6:** Create a deployment for your Worker which is scaled to three replicas
+
+
+As you apply files, be sure to check your work in between each step. Make sure deployments and pods are ready and
+available, make sure PVCs are bound, make sure services are correctly associated with deployments, etc.
+Use a debug deployment to test things as much as possible along the way. 
+
+
+
+
 Additional Resources
 --------------------
 
