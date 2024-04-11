@@ -1,7 +1,7 @@
 Messaging Systems
 =================
 
-The Queue is a powerful data structure which forms the foundation of many concurrent design patterns. Often, these
+The Queue is a powerful data structure which forms the foundation of many concurrent design patterns. Often these
 design patterns center around passing messages between agents within the concurrent system. We will explore one of the
 simplest and most useful of these message-based patterns - the so-called "Task Queue". By the end of this module,
 students should be able to:
