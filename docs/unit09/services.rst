@@ -1,5 +1,5 @@
-Services
-========
+Services and Ingress
+====================
 
 Services are the k8s resource one uses to expose HTTP APIs, databases and other components that communicate
 on a network to other k8s pods and, ultimately, to the outside world. 
@@ -8,7 +8,8 @@ After working through this module, students should be able to:
 * Set up port forwarding from pods on a Kubernetes cluster
 * Use a debug deployment to test access
 * Create and attach a service to a deployment
-
+* Use a NodePort service to expose a Flask API on the public internet
+* Use an Ingress object to map a NodePort port to a subdomain on the host
 
 k8s Networking Overview
 -----------------------
@@ -334,6 +335,162 @@ available, make sure PVCs are bound, make sure services are correctly associated
 Use a debug deployment to test things as much as possible along the way. 
 
 
+Public Access to Your Deployment
+--------------------------------
+
+The final objective is to make your Flask API available on the public internet.
+This process assumes you have already created a deployment and a service (of type
+``ClusterIP``) for your Flask API. There are two new k8s objects required:
+
+1. A second ``Service`` object of type ``NodePort`` which selects your deployment using the 
+   deployment label and exposes your Flask API on a public port. 
+2. An ``Ingress`` object which specifies a subdomain to make your Flask API available on and 
+   maps this domain to the public port created in Step 1. 
+
+
+Create a NodePort Service
+--------------------------
+
+The first step is to create a NodePort Service object pointing at your Flask deployment. 
+Copy the following code into a new file called ``service-nodeport-hello-flask.yml`` or something 
+similar:
+
+.. code-block:: yaml    
+   :linenos:
+   :emphasize-lines: 5, 9
+
+   ---
+   kind: Service
+   apiVersion: v1
+   metadata:
+       name: hello-flask-nodeport-service
+   spec:
+       type: NodePort
+       selector:
+           app: hello-flask
+       ports:
+           - port: 5000
+             targetPort: 5000
+
+Update the highlighted lines:
+
+1. The ``name`` of the Service object can be anything you want, so long 
+   as it is unique among the Services you have defined in your namespace. In particular, it needs to 
+   be a different name from your ClusterIP service defined previously. 
+
+2. The value of ``app`` in the ``selector`` stanza needs to match the ``app`` label in your 
+   deployment. This should be exactly the same as what you did in the ClusterIP service created
+   previously. As mentioned before, be sure the selector targets the **label** in your Flask
+   deployment, **not the deployment name**.
+  
+As usual, create the NodePort using ``kubectl``:
+
+.. code-block:: console 
+
+   [user-vm]$ kubectl apply -f service-nodeport-hello-flask.yml
+   service/hello-flask-nodeport-service created
+
+Change the command to reference the file name you used. 
+Check that the service was created successfully and determine the port that was created for it:
+
+.. code-block:: console 
+
+   [user-vm]$ kubectl get services
+   NAME                           TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+   hello-flask-nodeport-service   NodePort    10.233.1.87    <none>        5000:32627/TCP   24s
+   hello-flask-service            ClusterIP   10.233.58.60   <none>        5000/TCP         4d10h
+
+
+Here we see that port ``32627`` was created for this service. Your port will be different. 
+
+.. note::
+
+   You will use the port identified above when creating the Ingress object in the next section. 
+
+
+You can test that the NodePort service is working by using the special domain ``coe332.tacc.cloud``
+to exercise your Flask API from the kube-access VM:
+
+.. code-block:: console
+
+    [user-vm]$ curl coe332.tacc.cloud:32627/
+    Hello, world!
+
+Change the port (``32627``) to the port associated with your nodeport service, and the URL path
+(``/``) to a path your Flask API recognizes. 
+
+.. note::
+
+    The curl above only works on the public internet - in the next section, we will map the 
+    port to a subdomain of the host.
+
+
+Create an Ingress 
+-----------------
+
+Next we will create an Ingress object which will map the NodePort port defined previously 
+(in the above example, ``32627``) to a specific domain on the public internet. 
+
+Copy the following code into a new file called ``ingress-hello-flask.yml`` or similar:
+
+.. code-block:: yaml    
+   :linenos:
+   :emphasize-lines: 5, 11, 20
+
+   ---
+   kind: Ingress
+   apiVersion: networking.k8s.io/v1
+   metadata:
+     name: hello-flask-ingress
+     annotations:
+       kubernetes.io/ingress.class: "nginx"
+       nginx.ingress.kubernetes.io/ssl-redirect: "false"
+   spec:
+     rules:
+     - host: "username-flask.coe332.tacc.cloud"
+       http:
+           paths:
+           - pathType: Prefix
+             path: "/"
+             backend:
+               service:
+                 name: hello-flask-nodeport-service
+                 port:
+                     number: 32627
+
+
+Be sure to update the highlighted lines:
+
+1. Specify a meaningful ``name`` for the ingress. Keep in mind it should be unique among all 
+   Ingress obejcts within your namespace. 
+2. Update the ``host`` value to include your username in the subdomain, i.e., use the format 
+   ``- host: "<username>.coe332.tacc.cloud"``.
+3. Update port number to match the NodePort port you created in step 1. 
+
+Create the Ingress object:
+
+.. code-block:: console 
+
+    [user-vm]$ kubectl apply -f ingress-hello-flask.yml
+
+
+Double check that the object was successfully created:
+
+.. code-block:: console
+
+   [user-vm]$ kubectl get ingress
+   NAME                  CLASS    HOSTS                              ADDRESS   PORTS   AGE
+   hello-flask-ingress   <none>   username-flask.coe332.tacc.cloud             80      102s
+
+At this point our Flask API should be available on the public internet from the domain 
+we specified in the ``host`` field. We can test by running the following curl command from 
+anywhere, including our laptops. 
+
+
+.. code-block:: console
+
+   [local]$ curl username-flask.coe332.tacc.cloud/
+   Hello, world!
 
 
 Additional Resources
