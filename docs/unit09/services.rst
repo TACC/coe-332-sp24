@@ -443,9 +443,9 @@ Copy the following code into a new file called ``ingress-hello-flask.yml`` or si
    metadata:
      name: hello-flask-ingress
      annotations:
-       kubernetes.io/ingress.class: "nginx"
        nginx.ingress.kubernetes.io/ssl-redirect: "false"
    spec:
+     ingressClassName: nginx
      rules:
      - host: "username-flask.coe332.tacc.cloud"
        http:
