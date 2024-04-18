@@ -17,5 +17,7 @@ continuous integration.
    deployment
    integration_testing
    continuous_integration
+   matplotlib
+   redis_images
 
 
