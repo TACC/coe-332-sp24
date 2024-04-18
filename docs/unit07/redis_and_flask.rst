@@ -391,9 +391,9 @@ Given the above, try launching both services using the following command:
     Creating redis_flask-app_1 ... done                                                                                                    
     Creating redis_redis-db_1  ... done     
     [user-vm]$ docker ps -a
-    CONTAINER ID   IMAGE                      COMMAND                  CREATED         STATUS         PORTS                                       NAMES
-    d266fbd99e4c   redis:7                    "docker-entrypoint.s…"   3 seconds ago   Up 2 seconds   0.0.0.0:6379->6379/tcp, :::6379->6379/tcp   redis_redis-db_1
-    193f057687a8   wjallen/ml_flask_app:1.0   "python3 /ml_flask_a…"   3 seconds ago   Up 2 seconds   0.0.0.0:5000->5000/tcp, :::5000->5000/tcp   redis_flask-app_1
+    CONTAINER ID   IMAGE                       COMMAND                  CREATED         STATUS         PORTS                                       NAMES
+    d266fbd99e4c   redis:7                     "docker-entrypoint.s…"   3 seconds ago   Up 2 seconds   0.0.0.0:6379->6379/tcp, :::6379->6379/tcp   redis_redis-db_1
+    193f057687a8   username/ml_flask_app:1.0   "python3 /ml_flask_a…"   3 seconds ago   Up 2 seconds   0.0.0.0:5000->5000/tcp, :::5000->5000/tcp   redis_flask-app_1
 
 You should see the containers running. When you are ready to kill the services:
 
