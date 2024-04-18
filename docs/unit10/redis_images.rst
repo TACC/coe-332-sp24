@@ -94,7 +94,6 @@ Now that an image has been generated, consider the following code that will open
 the image and add it to the Redis db:
 
 .. code-block:: python3
-   :linenos:
 
     with open('/output_image.png', 'rb') as f:
         img = f.read()
@@ -123,7 +122,6 @@ random characters. Rather, write a new route to download just the image given th
 job ID:
 
 .. code-block:: python3
-   :linenos:
 
    from flask import Flask, request, send_file
 
