@@ -403,10 +403,6 @@ Check that the service was created successfully and determine the port that was 
 
 Here we see that port ``32627`` was created for this service. Your port will be different. 
 
-.. note::
-
-   You will use the port identified above when creating the Ingress object in the next section. 
-
 
 You can test that the NodePort service is working by using the special domain ``coe332.tacc.cloud``
 to exercise your Flask API from the kube-access VM:
@@ -456,7 +452,7 @@ Copy the following code into a new file called ``ingress-hello-flask.yml`` or si
                service:
                  name: hello-flask-nodeport-service
                  port:
-                     number: 32627
+                     number: 5000
 
 
 Be sure to update the highlighted lines:
@@ -465,7 +461,6 @@ Be sure to update the highlighted lines:
    Ingress obejcts within your namespace. 
 2. Update the ``host`` value to include your username in the subdomain, i.e., use the format 
    ``- host: "<username>.coe332.tacc.cloud"``.
-3. Update port number to match the NodePort port you created in step 1. 
 
 Create the Ingress object:
 
