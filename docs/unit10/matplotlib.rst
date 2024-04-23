@@ -50,7 +50,7 @@ Continuing from the same file, plot two graphs on the same axis:
 
 .. code-block:: python3
 
-   plt.plot(x, np.sin(x), np.sin(2*x))
+   plt.plot(x, np.sin(x), x, np.sin(2*x))
    plt.savefig('my_sinwavex2.png')    
    plt.show()
 
@@ -161,7 +161,7 @@ legends added. This is highly recommended for the final project.
    plt.xlabel('Rads') # Add a label to the x-axis.
    plt.ylabel('Amplitude') # Add a label to the y-axis.
    plt.title('Sin and Cos Waves') # Add a graph title.
-   plt.savefig('my_labels_legends')
+   plt.savefig('my_labels_legends.png')
    plt.show()
 
 
