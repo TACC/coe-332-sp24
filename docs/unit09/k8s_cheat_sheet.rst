@@ -7,19 +7,21 @@ k8s Resource Types
 ------------------
 Here are the primary k8s resource types we have covered in this class:
 
-  * ``Pods`` -- Pods are the simplest unit of compute in k8s and represent a generalization of the Docker container. Pods
-    can contain more than one container, and every container within a pod is scheduled together, on the same machine,
-    with a single IP address and shared file system. Pod definitions include a ``name``, a (Docker) ``image``, a ``command`` to run,
-    as well as an ``ImagePullPolicy``, ``volumeMounts`` and a set of ``ports`` to expose. Pods can be thought of as
-    disposable and temporary.
-  * ``Deployments`` -- Deployments are the k8s resource type to use for deploying *long-running* application components,
-    such as APIs, databases, and long-running worker programs. Deployments are made up of one or more matching pods, and the
-    matching is done using ``labels`` and ``labelSelectors``.
-  * ``PersistentVolumeClaims`` (PVCs) -- PVCs create a named storage request against a storage class available on the k8s
-    cluster. PVCs are used to fill volumes with permenant storage so that data can be saved across different pod executions
-    for the same stateful application (e.g., a database).
-  * ``Services`` -- Services are used to expose an entire application component to other pods. Services get their own IP
-    address which persists beyond the life of the individual pods making up the application.
+* ``Pods`` -- Pods are the simplest unit of compute in k8s and represent a generalization of the Docker container. Pods
+  can contain more than one container, and every container within a pod is scheduled together, on the same machine,
+  with a single IP address and shared file system. Pod definitions include a ``name``, a (Docker) ``image``, a ``command`` to run,
+  as well as an ``ImagePullPolicy``, ``volumeMounts`` and a set of ``ports`` to expose. Pods can be thought of as
+  disposable and temporary.
+* ``Deployments`` -- Deployments are the k8s resource type to use for deploying *long-running* application components,
+  such as APIs, databases, and long-running worker programs. Deployments are made up of one or more matching pods, and the
+  matching is done using ``labels`` and ``labelSelectors``.
+* ``PersistentVolumeClaims`` (PVCs) -- PVCs create a named storage request against a storage class available on the k8s
+  cluster. PVCs are used to fill volumes with permenant storage so that data can be saved across different pod executions
+  for the same stateful application (e.g., a database).
+* ``Services`` -- Services are used to expose an entire application component to other pods. Services get their own IP
+  address which persists beyond the life of the individual pods making up the application.
+* ``Ingresses`` -- Map services running on specific ports to subdomains on the host. These are useful if you want to give
+  your web app a unique and descriptive domain name.
 
 
 
