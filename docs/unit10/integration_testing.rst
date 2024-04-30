@@ -10,7 +10,7 @@ units of a software system at once. Some properties of integration tests include
 * A given test failure provides more limited information as to the root cause.
 
 It's worth pointing out that our definition of integration test leaves some
-ambiguity. You will also see the term "functional tests" used for tests the
+ambiguity. You will also see the term "functional tests" used for tests that
 exercise entire aspects of a software system. After going through this module,
 students should be able to:
 
