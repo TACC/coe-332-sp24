@@ -120,5 +120,57 @@ the Jetstream VM. Press ``Ctrl+C`` to quit forwarding.
 Flask and HTML
 --------------
 
-Coming soon
+Flask has the ability to render HTML templates that contain a mix of static data
+and variables (for run-time dynamic data). The route you write will take the 
+template from a predefined location, inject any variables, and render it into
+a final HTML document to return to the client.
 
+In your Flask project directory, create a folder called ``templates`` and add
+the following HTML document as ``example.html``. It uses Jinja syntax for
+injecting dynamic data (``{{name}}``):
+
+.. code-block:: html
+
+   <!DOCTYPE html>
+   <html>
+   <head>
+       <title>Flask Templating Example</title>
+   </head>
+   <body>
+       <h1>Hello, {{name}}!</h1>
+       <p>This file should be stored in the "templates" folder as "example.html"</p>
+   </body>
+   </html>
+
+Then, adapt the ``/<name>`` Flask route to return that HTML document using Flask's 
+``render_template()`` method. The old version of the route which returns a plain
+string is also provided as reference. 
+
+.. code-block:: python3
+   :linenos:
+
+   from flask import Flask, render_template
+   
+   app = Flask(__name__)
+   
+   @app.route('/<name>', methods=['GET'])
+   def hello_name(name):
+       return render_template('example.html', name=name)
+
+   ### For reference, this is the /<name> route without render_template
+   # @app.route('/<name>', methods=['GET'])
+   # def hello_name(name):
+   #     return f'Hello, {name}!\n'
+   
+   if __name__ == '__main__':
+       app.run(debug=True, host='0.0.0.0')
+
+   
+
+
+
+Additional Resources
+--------------------
+
+* `Ngrok <https://dashboard.ngrok.com/signup>`_
+* `Flask Templates <https://flask.palletsprojects.com/en/2.3.x/tutorial/templates/>`_
